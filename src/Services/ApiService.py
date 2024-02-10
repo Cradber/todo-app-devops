@@ -25,7 +25,7 @@ class ApiService:
         with open(filepath, 'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(todo.keys())
-            writer.writerows(todo.values())
+            writer.writerow(todo.values())
 
     def run(self):
         print('Running ApiService', file=stderr)
