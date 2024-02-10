@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from src.Application.App import App
+from src.controllers import AppController
 
 
-app = App()
+app = AppController()
 
-app.api_service().run()
+app.save_todos_as_csv()
