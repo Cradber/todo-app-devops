@@ -30,4 +30,6 @@ class ApiService:
     def run(self):
         print('Running ApiService', file=stderr)
 
-        # TODO: follow README.md instructions
+        todos = self.get_all_todos()
+        for todo in todos:
+            self.save_todo_as_csv(todo)
