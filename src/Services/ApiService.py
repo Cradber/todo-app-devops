@@ -1,3 +1,6 @@
+import csv
+import os
+from datetime import datetime
 from sys import stderr
 
 import requests
@@ -13,6 +16,16 @@ class ApiService:
             return response.json()
         else:
             response.raise_for_status()
+
+    def save_todo_as_csv(self, todo):
+        date_prefix = datetime.now().strftime("%d_%m_%Y")
+        filename = f"{date_prefix}_{todo['id']}.csv"
+        filepath = os.path.join('storage', filename)
+
+        with open(filepath, 'w') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(todo.keys())
+            writer.writerows(todo.values())
 
     def run(self):
         print('Running ApiService', file=stderr)
