@@ -1,8 +1,8 @@
 # src/init_db.py
 import json
 
-from src.models import TodoModel
-from src.models.todo import Base, engine, SessionLocal
+from models import TodoModel
+from models.todo import Base, engine, SessionLocal
 
 
 def create_tables():
