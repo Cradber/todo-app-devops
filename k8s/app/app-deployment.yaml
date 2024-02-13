@@ -15,7 +15,7 @@ spec:
       initContainers:
         - name: init-db
           image: icradber/todo-app:latest
-          command: [ 'python', './src/db/init_db.py' ]
+          command: [ 'python', './src/init_db.py' ]
           env:
             - name: DATABASE_URL
               value: "postgresql://user:password@postgres:5432/todosdb"
