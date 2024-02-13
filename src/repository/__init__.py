@@ -1,1 +1,1 @@
-from src.repository.todo import TodoRepository
+from .todo import TodoRepository
