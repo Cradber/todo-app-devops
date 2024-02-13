@@ -1,15 +1,25 @@
-from src.api import TodoAPIClient
-from src.models import Todo
+from sqlalchemy.orm import Session
+
+from src.entities import TodoEntity
+from src.models import TodoModel
 
 
 class TodoRepository:
-    def __init__(self, api_client: TodoAPIClient):
-        self.api_client = api_client
-        self.todos = self.api_client.fetch_todos()
+    def __init__(self, db_session: Session):
+        self.db_session = db_session
 
-    def find_all(self) -> [Todo]:
-        return list(map(self._map_to_domain_entity, self.todos))
-        # return [self._map_to_domain_entity(todo) for todo in todos_data]
+    def find_all(self) -> [TodoEntity]:
+        todos_model = self.db_session.query(TodoModel).all()
+        return [self._map_model_to_entity(todo) for todo in todos_model]
 
-    def _map_to_domain_entity(self, todo_data) -> Todo:
-        return Todo(user_id=todo_data['id'], title=todo_data['title'], completed=todo_data['completed'])
+    def find_all_by_user_id(self, id: int) -> [TodoEntity]:
+        return list(filter(lambda todo: todo.user_id == id, self.find_all()))
+
+    def create_todo(self, todo_entity: TodoEntity):
+        todo_model = TodoModel(user_id=todo_entity.user_id, title=todo_entity.title, completed=todo_entity.completed)
+        self.db_session.add(todo_model)
+        self.db_session.commit()
+        return self._map_model_to_entity(todo_model)
+
+    def _map_model_to_entity(self, todo_model: TodoModel) -> TodoEntity:
+        return TodoEntity(user_id=todo_model.user_id, title=todo_model.title, completed=todo_model.completed)
