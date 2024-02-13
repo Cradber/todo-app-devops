@@ -13,3 +13,5 @@ El objetivo de este proyecto final de Bootcamp DevOps es automatizar el ciclo de
 
 - **GitHub Actions**: Para definir pipeline de CI/CD que incluirá etapas para la validación del código, construcción y prueba de la imagen de Docker, y despliegue automático a Kubernetes.
 
+---
+> ...en construcctión  👨‍💻 🏗️ 🛜 😓
