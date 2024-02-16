@@ -61,7 +61,7 @@ def get_todos_completed():
 
 
 @app.route('/todos/uncompleted', methods=['GET'])
-def get_todos_completed():
+def get_todos_uncompleted():
     # Use todo_controller to get todos and return them
     todos = todo_controller.get_todos_uncompleted()
     return jsonify(todos), 200
