@@ -54,11 +54,9 @@ def create_todo(user_id):
 
 
 @app.route('/todos/completed', methods=['GET'])
-def get_todos():
+def get_todos_completed():
     # Use todo_controller to get todos and return them
-    todo_data = request.get_json()
-    completion_status = todo_data['completed'] if 'completed' in todo_data else True
-    todos = todo_controller.get_todos_completed(completion_status)
+    todos = todo_controller.get_todos_completed()
     return jsonify(todos), 200
 
 
