@@ -13,9 +13,9 @@ class TodoRepository:
         return [self._map_model_to_entity(todo) for todo in todos_model]
 
     def find_all_completed(self, completion_status: bool) -> [TodoEntity]:
-        todos_model_completed = self.db_session.query(TodoModel).where(TodoModel.completed == completion_status).all()
-        return [self._map_model_to_entity(todo) for todo in todos_model_completed]
-        # return list(filter(lambda todo: todo.completed is True, self.find_all()))
+        # todos_model_completed = self.db_session.query(TodoModel).where(TodoModel.completed == completion_status).all()
+        # return [self._map_model_to_entity(todo) for todo in todos_model_completed]
+        return list(filter(lambda todo: todo.completed is completion_status, self.find_all()))
 
     def find_all_by_user_id(self, id: int) -> [TodoEntity]:
         return list(filter(lambda todo: todo.user_id == id, self.find_all()))
