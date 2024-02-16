@@ -1,4 +1,4 @@
-# src/init_db.py
+#!/usr/bin/env python3
 import json
 
 from models import TodoModel
