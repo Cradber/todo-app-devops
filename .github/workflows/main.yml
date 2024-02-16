@@ -24,7 +24,9 @@ jobs:
     #   run: |
     #     pytest
     - name: Build and push Docker image
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v5
       with:
         push: true
         tags: icradber/todo-app:latest
+        secrets: |
+          GIT_AUTH_TOKEN=${{ secrets.DOCKERHUB_TOKEN }}
