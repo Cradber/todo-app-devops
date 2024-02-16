@@ -10,6 +10,9 @@ class TodoService:
     def get_all_todos(self):
         return self.todo_repository.find_all()
 
+    def get_all_todos_completed(self, completion_status: bool):
+        return self.todo_repository.find_all_completed(completion_status)
+
     def get_all_by_user_id(self, user_id):
         return self.todo_repository.find_all_by_user_id(user_id)
 
