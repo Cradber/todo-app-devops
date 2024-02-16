@@ -18,8 +18,8 @@ class TodoController:
         self.db_session.close()
         return todos
 
-    def get_todos_completed(self, completion_status: bool) -> [TodoEntity]:
-        todos = self.todo_service.get_all_todos_completed(completion_status)
+    def get_todos_completed(self) -> [TodoEntity]:
+        todos = self.todo_service.get_all_todos_completed()
         self.db_session.close()
         return todos
 
