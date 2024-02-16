@@ -15,6 +15,9 @@ class TodoRepository:
     def find_all_completed(self) -> [TodoEntity]:
         return list(filter(lambda todo: todo.completed is True, self.find_all()))
 
+    def find_all_uncompleted(self) -> [TodoEntity]:
+        return list(filter(lambda todo: todo.completed is False, self.find_all()))
+
     def find_all_by_user_id(self, id: int) -> [TodoEntity]:
         return list(filter(lambda todo: todo.user_id == id, self.find_all()))
 
