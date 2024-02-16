@@ -13,5 +13,15 @@ El objetivo de este proyecto final de Bootcamp DevOps es automatizar el ciclo de
 
 - **GitHub Actions**: Para definir pipeline de CI/CD que incluirá etapas para la validación del código, construcción y prueba de la imagen de Docker, y despliegue automático a Kubernetes.
 
+### Descripción del proyecto
+
+El proyecto que se presenta es una siple API de gestion de ToDo de forma colaborativa donde varios integrantes pudieran planificarse las suyas. La estructura consta de la tarea que se quiera realizar y su estatus como completado o no. En la base de datos, pues, se almacena esta información con un identificador único corresopndiente al usuario que la crreo y otro con respecto a todos los identificadores de la tabla. 
+```json
+{
+    "title": "delectus aut autem",
+    "completed": false
+}
+```
+
 ---
 > ...en construcctión  👨‍💻 🏗️ 🛜 😓
