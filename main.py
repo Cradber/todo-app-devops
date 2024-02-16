@@ -53,6 +53,15 @@ def create_todo(user_id):
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/todos/completed', methods=['GET'])
+def get_todos():
+    # Use todo_controller to get todos and return them
+    todo_data = request.get_json()
+    completion_status = todo_data['completed'] if 'completed' in todo_data else True
+    todos = todo_controller.get_todos_completed(completion_status)
+    return jsonify(todos), 200
+
+
 # Add more routes for update and delete functionalities
 
 if __name__ == '__main__':
